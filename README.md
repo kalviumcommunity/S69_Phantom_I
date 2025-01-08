@@ -1,5 +1,5 @@
 
-__# Phantom_I__
+# Phantom_I
 
 This is a ranking website for movies, anime, and manga,etc. Users can vote for shows based on various criteria. The platform emphasizes fun and engaging rankings, including unconventional categories like "worst plot twists" or "most ugly character designs", etc.
 
