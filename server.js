@@ -1,4 +1,12 @@
 const express = require('express');
+
+const routes = require("./routes")
+const app = express()
+;
+
+app.use(express.json())
+app.use('/api',routes)
+=======
 const app = express();
 const db = require("./db")
 
@@ -9,6 +17,7 @@ db().then(() => {
 }).catch(() => {
     console.error("Database connection failed");
 });
+
 
 app.get("/",(req,res)=>{
     res.write("<b>Welcome to Phantom I</b><br><br>")
