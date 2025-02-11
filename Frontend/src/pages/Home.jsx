@@ -1,7 +1,7 @@
 import React from "react";
 import img1 from '../assets/4.png';
-import img2 from '../assets/2d.png';  // Add new images in the assets folder
-import img3 from '../assets/3.png';
+import img2 from '../assets/5.jpg';  // Add new images in the assets folder
+// import img3 from '../assets/3.png';
 import wood from '../assets/bg.png'
 import b from '../assets/b2.jpg'
 
@@ -46,7 +46,7 @@ const Home = () => {
           backgroundAttachment: "fixed"
         }}
       >
-        <h3 className="bg-opacity-50 p-4 text-green-400 bg-black">
+        <h3 className=" p-4  text-white text-4xl ">
           Discover,<br/> Rank, and discuss the best anime, movies, and <br/>manga with like-minded fans!
         </h3>
       </div>
