@@ -10,8 +10,10 @@ const db = require("./db")
 
 let a = false;
 db().then(() => {
-    a = true;
     console.log("MongoDB connected successfully");
+    app.listen(3000, () => {
+        console.log(`Server is running on port 3000`);
+    });
 }).catch(() => {
     console.error("Database connection failed");
 });
@@ -35,6 +37,6 @@ app.get("/ping",(req,res)=>{
 })
 
 
-app.listen(3000,()=>{
-    console.log(`Server is running on port ${3000}`)
-})
+// app.listen(3000,()=>{
+//     console.log(`Server is running on port ${3000}`)
+// })
