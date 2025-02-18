@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const connect = async()=>{
     try{
-        const data = await mongoose.connect(process.env.DB_URL)
+        const data = await mongoose.connect('mongodb+srv://user:USER@asap-1.uqzgz.mongodb.net/?retryWrites=true&w=majority&appName=ASAP-1')
         console.log(`MongoDB connected with server: ${data.connection.host}`);
         return true;
     }
