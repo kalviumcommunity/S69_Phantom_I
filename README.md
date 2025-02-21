@@ -24,4 +24,4 @@ Frontend Deployment Link:- https://phantom-i.netlify.app/
 4. Voting Timeline:-
 - Voting Timeline for various categories.
 
-5. Interactive UI and Fully Responsive for mobiles also
+5. Interactive UI and Fully Responsive for mobiles also. It will dynamically align the things according to the screen size.
