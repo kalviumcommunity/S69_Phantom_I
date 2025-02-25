@@ -4,10 +4,12 @@ import img2 from '../assets/5.jpg';  // Add new images in the assets folder
 // import img3 from '../assets/3.png';
 import wood from '../assets/bg.png'
 import b from '../assets/b2.jpg'
+import Navbar from "../components/Navbar";
 
 const Home = () => {
   return (
     <>
+    <Navbar/>
       {/* Section 1 */}
       <div 
         className="w-full h-screen flex items-center justify-center text-white text-3xl font-bold"

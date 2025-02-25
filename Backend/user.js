@@ -1,53 +1,68 @@
-const item = []
+const User = require("./schema"); 
 
-exports.create = (req,res)=>{
-    const id = Date.now()
-    const {name,email} = req.body
-    if (!email || !name){
-        return res.send("Enter name and email")
-    }
-    for(let i=0;i<item.length;i++){
-        if(email==item[i].email){
-            return res.send("Email already used")
+exports.create = async (req, res) => {
+    try {
+        const { name, email } = req.body;
+        if (!email || !name) {
+            return res.status(400).json({ message: "Enter name and email" });
         }
-    }
-    item.push({id,name,email})
-    res.status(201).json({id,name,email})
-}
 
-exports.read = (req,res)=>{
-    if(item){
-        res.status(200).json(item)
-    }
-}
 
-exports.update = (req,res)=>{
-    const {email} = req.query
-    const {name,em} = req.body
-    const x = item.find((y)=>{
-        return y.email === email
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: "Email already used" });
+        }
+
         
-    })
-    if(x){
-        x.name =   name || x.name
-        x.email =  em || x.email
-        return res.status(200).json(x)
-    }else{
-        return res.status(404).json({message: "Item not found."})
+        const newUser = new User({ name, email });
+        await newUser.save();
+        res.status(201).json(newUser);
+    } catch (error) {
+        res.status(500).json({ message: "Server error", error });
     }
-   
-}
+};
 
-exports.delete = (req,res)=>{
-    const {email} = req.query
-    const x = item.findIndex((y)=>{
-        return y.email === email
-        
-    })
-    if(x!==-1){
-        item.splice(x,1)
-        return res.status(200).json("Deleted")
-    }else{
-        return res.status(404).json({message: "Item not found."})
+exports.read = async (req, res) => {
+    try {
+        const users = await User.find();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ message: "Server error", error });
     }
-}
+};
+
+exports.update = async (req, res) => {
+    try {
+        const { email } = req.query;
+        const { name, em } = req.body;
+
+        const updatedUser = await User.findOneAndUpdate(
+            { email },
+            { name: name || undefined, email: em || email },
+            { new: true, runValidators: true } 
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found." });
+        }
+
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        res.status(500).json({ message: "Server error", error });
+    }
+};
+
+exports.delete = async (req, res) => {
+    try {
+        const { email } = req.query;
+        const deletedUser = await User.findOneAndDelete({ email });
+
+        if (!deletedUser) {
+            return res.status(404).json({ message: "User not found." });
+        }
+
+        res.status(200).json({ message: "Deleted successfully." });
+    } catch (error) {
+        res.status(500).json({ message: "Server error", error });
+    }
+};
