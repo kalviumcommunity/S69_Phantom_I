@@ -1,10 +1,10 @@
 const express = require('express')
-const user = require("./user")
+const User = require("./user")
 const router = express.Router()
 
-router.post('/create',user.create);
-router.get('/read',user.read)
-router.put('/update',user.update)
-router.delete('/delete',user.delete)
+router.post('/create',User.create);
+router.get('/read',User.read)
+router.put('/update',User.update)
+router.delete('/delete',User.delete)
 
 module.exports = router

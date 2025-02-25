@@ -2,15 +2,22 @@ import React from 'react'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import './App.css'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Data from './pages/data'
 
 function App() {
 
   return (
-    <div>
-      <Navbar/>
-      <Home/> 
+    <BrowserRouter>
+      <Routes>
+        <Route path='/landing' element={<Home/>}></Route>
+        {/* <Navbar/> */}
+        <Route path='/' element={<Data/>} ></Route>
+        {/* <Home/>  */}
+        </Routes>
       
-    </div>
+      </BrowserRouter>
+    
   )
 }
 

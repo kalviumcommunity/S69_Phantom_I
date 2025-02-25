@@ -1,22 +1,22 @@
 const express = require('express');
-
+const cors = require('cors')
 const routes = require("./routes")
 const app = express();
 
+app.use(cors())
 app.use(express.json())
-app.use('/api',routes)
+app.use('/',routes)
 
 const db = require("./db")
 
 let a = false;
 db().then(() => {
     console.log("MongoDB connected successfully");
-    
-   
+    a=true
 }).catch(() => {
     console.error("Database connection failed");
 });
-
+console.log(a)
 
 app.get("/",(req,res)=>{
     res.write("<b>Welcome to Phantom I</b><br><br>")

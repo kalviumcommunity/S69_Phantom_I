@@ -3,6 +3,7 @@ import React from 'react'
 function Navbar() {
   return (
     <div>
+    
       <nav className="fixed top-0 left-0 w-full bg-black text-white p-4 shadow-lg z-50">
         <div className="container mx-5 flex justify-between items-center">
           <h1 className="text-5xl font-bold">Phantom_I</h1>
