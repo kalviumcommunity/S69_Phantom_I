@@ -5,7 +5,7 @@ function Data() {
     const [user, setUser] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3000/read") // Fix API URL if needed
+        fetch("http://localhost:3000/api/users/read") 
             .then((res) => {
                 if (!res.ok) {
                     throw new Error(`HTTP error! status: ${res.status}`);
