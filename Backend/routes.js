@@ -1,10 +1,10 @@
 const express = require('express')
-const User = require("./user")
+const UserSchema = require("./user")
 const router = express.Router()
 
-router.post('/create',User.create);
-router.get('/read',User.read)
-router.put('/update',User.update)
-router.delete('/delete',User.delete)
+router.post('/users/create',UserSchema.create);
+router.get('/users/read',UserSchema.read)
+router.put('/users/update',UserSchema.update)
+router.delete('/users/delete',UserSchema.delete)
 
 module.exports = router

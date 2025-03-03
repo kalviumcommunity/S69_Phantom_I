@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import './App.css'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Data from './pages/data'
+import Signup from './pages/Signup'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         {/* <Navbar/> */}
         <Route path='/' element={<Data/>} ></Route>
         {/* <Home/>  */}
+        <Route path='/signup' element={<Signup/>} ></Route>
         </Routes>
       
       </BrowserRouter>
