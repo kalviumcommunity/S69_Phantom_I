@@ -24,6 +24,16 @@ exports.create = async (req, res) => {
 
 exports.read = async (req, res) => {
     try {
+        const { email } = req.params; 
+
+        if (email) {
+            const user = await UserSchema.findOne({ email });
+            if (!user) {
+                return res.status(404).json({ message: "User not found." });
+            }
+            return res.status(200).json(user);
+        }
+
         const users = await UserSchema.find();
         res.status(200).json(users);
     } catch (error) {
@@ -31,15 +41,17 @@ exports.read = async (req, res) => {
     }
 };
 
+
+
 exports.update = async (req, res) => {
     try {
-        const { email } = req.query;
-        const { name, em } = req.body;
-        const { password, pass } = req.body;
+        const { email } = req.params;
+        const { name } = req.body;
+
 
         const updatedUser = await UserSchema.findOneAndUpdate(
             { email },
-            { name: name || undefined, email: em || email, password: pass || password },
+            { name: name || undefined},
             { new: true, runValidators: true } 
         );
 
@@ -55,7 +67,7 @@ exports.update = async (req, res) => {
 
 exports.delete = async (req, res) => {
     try {
-        const { email } = req.query;
+        const { email } = req.params;
         const deletedUser = await UserSchema.findOneAndDelete({ email });
 
         if (!deletedUser) {
