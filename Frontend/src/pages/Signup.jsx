@@ -17,7 +17,7 @@ function Signup() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                name: `${data.firstname} ${data.lastname}`, 
+                name: `${data.name}`, 
                 email: data.email,
                 password: data.password,
             }),
@@ -53,19 +53,13 @@ function Signup() {
         <form className="flex flex-col gap-4 w-70" onSubmit={handleSubmit(doneSubmit)}>
 
           <input
-            placeholder='First Name'
+            placeholder='Name'
             className='p-3 border-2 rounded-md'
-            {...register('firstname', { required: "First Name is required" })}
+            {...register('name', { required: "Name is required" })}
           />
-          {errors.firstname && <span className='flex justify-start rounded-md pl-2 text-red-500'>{errors.firstname.message}</span>}
+          {errors.name && <span className='flex justify-start rounded-md pl-2 text-red-500'>{errors.name.message}</span>}
 
-          <input
-            placeholder='Last Name'
-            className='p-3 border-2 rounded-md'
-            {...register('lastname', { required: "Last Name is required" })}
-          />
-          {errors.lastname && <span className='flex justify-start pl-2 rounded-md text-red-500'>{errors.lastname.message}</span>}
-
+         
           <input
             placeholder="Email"
             className='p-3 border-2 rounded-md'
